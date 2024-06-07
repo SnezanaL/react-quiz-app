@@ -37,7 +37,7 @@ const reducer = (state, action) => {
       };
     case "NEW_ANSWER":
       // eslint-disable-next-line no-case-declarations
-      const question = state.questions(state.index);
+      const question = state.questions[state.index];
 
       return {
         ...state,
