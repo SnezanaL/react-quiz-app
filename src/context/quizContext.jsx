@@ -47,7 +47,7 @@ const reducer = (state, action) => {
             ? state.points + question.points
             : state.points,
       };
-    case "Next_QUESTION":
+    case "NEXT_QUESTION":
       return {
         ...state,
         index: state.index + 1,

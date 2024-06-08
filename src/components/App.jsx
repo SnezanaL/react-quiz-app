@@ -6,10 +6,15 @@ import Error from "./Error";
 
 import WelcomeScreen from "./WelcomeScreen";
 import Question from "./Question";
+import NextButton from "./NextButton";
+import Timer from "./Timer";
+import Footer from "./Footer";
+import Progress from "./Progress";
+import FinishQuiz from "./FinishQuiz";
 
 function App() {
-  const { status } = useQuiz();
-  console.log(status);
+  const { status, highScore } = useQuiz();
+  console.log(highScore);
   return (
     <div className="app">
       <Header />
@@ -17,7 +22,17 @@ function App() {
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
         {status === "ready" && <WelcomeScreen />}
-        {status === "active" && <Question />}
+        {status === "active" && (
+          <>
+            <Progress />
+            <Question />
+            <Footer>
+              <Timer />
+              <NextButton />
+            </Footer>
+          </>
+        )}
+        {status === "finished" && <FinishQuiz />}
       </Main>
     </div>
   );
